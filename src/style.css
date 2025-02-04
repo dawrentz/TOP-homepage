@@ -1,12 +1,45 @@
 /* style.css */
 
+/* ====================================== Imports ======================================  */
+
 @import url("./reset.css");
+
+@font-face {
+  font-family: "bebas_neueregular";
+  src:
+    url("./fonts/Bebas_Neue/bebasneue-regular-webfont.woff2") format("woff2"),
+    url("./fonts/Bebas_Neue/bebasneue-regular-webfont.woff") format("woff"),
+    url("./fonts/Bebas_Neue/BebasNeue-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "muktaregular";
+  src:
+    url("./fonts/Mukta/mukta-regular-webfont.woff2") format("woff2"),
+    url("./fonts/Mukta/mukta-regular-webfont.woff") format("woff"),
+    url("./fonts/Mukta/Mukta-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ====================================== Global ======================================  */
 
 :root {
   /* variables */
   --main-color: white;
+  --sec-color: black;
   --spacing: 1rem;
   --padding: 1rem;
+
+  /* animation timing */
+  --delay1: 0.25s;
+  --time1: 0.5s;
+  --delay2: calc(var(--delay1) + var(--time1) + 0.5s);
+  --time2: 0.2s;
+  --delay3: calc(var(--delay2) + var(--time2) + 0.5s);
+  --time3: 1s;
 
   /* debugging */
   * {
@@ -14,8 +47,106 @@
   }
 }
 
-body {
-  background-color: aquamarine;
+/* ====================================== Content ======================================  */
 
-  font-family: Arial, Helvetica, sans-serif;
+body {
+  background-color: var(--main-color);
+
+  font-family: "muktaregular", Arial, Helvetica, sans-serif;
+
+  overflow: hidden;
+
+  > * {
+    padding: var(--padding);
+  }
+}
+
+main {
+  header {
+    img {
+      /* animate3 */
+      animation: main-img-appear var(--time3) forwards;
+      animation-delay: var(--delay3);
+    }
+
+    .name-main {
+      font-family: bebas_neueregular;
+      font-size: 5.75rem;
+      color: var(--main-color);
+
+      position: absolute;
+      top: 320px;
+      transform-origin: bottom right;
+
+      *:first-child {
+        /* animation: name-slide-in 0.5s; */
+      }
+
+      *:last-child {
+        position: relative;
+        top: -50px;
+
+        margin-left: auto;
+
+        color: red;
+
+        /* animate1 */
+        animation: name-slide-in var(--delay1) backwards;
+        animation-delay: var(--time1);
+      }
+    }
+
+    .background-div {
+      --bg-height: 100rem;
+
+      width: 200vw;
+      height: var(--bg-height);
+
+      background-color: black;
+
+      position: absolute;
+      top: calc(var(--bg-height) * -1);
+      right: 0;
+
+      z-index: -1;
+
+      /* animate2 */
+      animation: rotate-background var(--time2) linear forwards;
+      animation-delay: var(--delay2);
+      transform-origin: bottom right;
+    }
+  }
+}
+
+/* ====================================== Catch All ======================================  */
+
+/* ====================================== Animation ======================================  */
+
+/* timing variables */
+
+@keyframes rotate-background {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-20deg);
+  }
+}
+
+@keyframes main-img-appear {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+@keyframes name-slide-in {
+  from {
+    transform: translateX(-100vw);
+  }
+  to {
+    transform: translateX(0);
+  }
 }

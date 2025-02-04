@@ -1,5 +1,11 @@
-# template-repo
+# TOP-homepage
 
-Dedicated template repo for init new projects
+https://www.theodinproject.com/lessons/node-path-advanced-html-and-css-homepage
+
+<!--
 
 todo:
+
+notes:
+
+ -->

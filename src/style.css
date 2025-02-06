@@ -36,9 +36,9 @@
   /* animation timing */
   --delay1: 0.25s;
   --time1: 0.5s;
-  --delay2: calc(var(--delay1) + var(--time1) + 0.5s);
-  --time2: 0.2s;
-  --delay3: calc(var(--delay2) + var(--time2) + 0.5s);
+  --delay2: calc(var(--delay1) + var(--time1) + 0s);
+  --time2: 1s;
+  --delay3: calc(var(--delay2) + var(--time2) + 0.25s);
   --time3: 1s;
 
   /* debugging */
@@ -48,88 +48,180 @@
 }
 
 /* ====================================== Content ======================================  */
+/* default sizing for desktop */
 
 body {
-  background-color: var(--main-color);
+  max-width: 1300px;
+  margin: auto;
+  overflow-x: hidden;
 
+  background-color: var(--main-color);
   font-family: "muktaregular", Arial, Helvetica, sans-serif;
 
-  overflow: hidden;
-
   > * {
-    padding: var(--padding);
+    padding: calc(5 * var(--padding)) var(--padding);
   }
 }
 
 main {
   header {
-    img {
-      /* animate3 */
-      animation: main-img-appear var(--time3) forwards;
-      animation-delay: var(--delay3);
-    }
+    position: relative;
 
-    .name-main {
-      font-family: bebas_neueregular;
-      font-size: 5.75rem;
-      color: var(--main-color);
+    .intro-wrapper {
+      position: relative;
+      /* display: grid; */
+      /* grid-template-columns: auto auto; */
 
-      position: absolute;
-      top: 320px;
-      transform-origin: bottom right;
+      img.headshot {
+        float: left;
 
-      *:first-child {
-        /* animation: name-slide-in 0.5s; */
+        min-width: max-content;
+
+        box-shadow: 5px 5px 5px black;
+        z-index: 2;
+
+        /* animate3 */
+        animation: main-img-appear var(--time3) forwards;
+        animation-delay: var(--delay3);
       }
 
-      *:last-child {
+      .name-main {
+        font-family: bebas_neueregular;
+        font-size: 5.75rem;
+        color: var(--main-color);
+
+        position: absolute;
+        top: 315px;
+        left: 5px;
+        transform-origin: bottom right;
+        /* z-index: 1; */
+
+        /* all names */
+        > * {
+          text-align: end;
+        }
+
+        /* first name */
+        *:first-child {
+          /* animation: name-slide-in 0.5s; */
+        }
+
+        /* last name */
+        *:last-child {
+          position: relative;
+          top: -50px;
+
+          color: red;
+
+          /* animate1 */
+          animation: name-slide-in var(--time1) backwards;
+          animation-delay: var(--delay1);
+        }
+      }
+
+      .about-me {
         position: relative;
-        top: -50px;
+        top: 125px;
 
-        margin-left: auto;
+        display: grid;
+        grid-template-rows: auto auto 1fr;
 
-        color: red;
+        height: min-content;
 
-        /* animate1 */
-        animation: name-slide-in var(--delay1) backwards;
-        animation-delay: var(--time1);
+        font-size: large;
+
+        background-color: var(--main-color);
+        box-shadow: 5px 5px 5px black;
+
+        z-index: -1;
+
+        padding: var(--padding) calc(2 * var(--padding));
+
+        /* animate4 (with animate3) */
+        animation: main-img-appear var(--time3) backwards;
+        animation-delay: var(--delay3);
+
+        h2 {
+          font-size: 3rem;
+        }
+
+        .about-icons-wrapper {
+          margin-top: 4rem;
+
+          display: flex;
+          justify-content: end;
+          align-items: end;
+          gap: var(--spacing);
+        }
       }
     }
 
     .background-div {
-      --bg-height: 100rem;
-
-      width: 200vw;
-      height: var(--bg-height);
-
+      height: 60rem;
+      width: 550rem;
       background-color: black;
 
       position: absolute;
-      top: calc(var(--bg-height) * -1);
-      right: 0;
+      bottom: -33rem;
+      left: -250rem;
+      transform-origin: bottom left;
+      transform: rotate(-5deg);
 
       z-index: -1;
+      /* z-index: 99; */
+      /* opacity: 0.66; */
 
       /* animate2 */
-      animation: rotate-background var(--time2) linear forwards;
+      animation: rotate-background var(--time2) linear backwards;
       animation-delay: var(--delay2);
-      transform-origin: bottom right;
     }
+  }
+}
+
+/* ====================================== Dynamic sizing ======================================  */
+
+/* tablet */
+@media (max-width: 1199px) {
+  body {
+    width: 500px;
+  }
+
+  main {
+    header {
+      /*  */
+    }
+  }
+}
+
+/* mobile */
+@media (max-width: 500px) {
+  body {
+    width: 320px;
   }
 }
 
 /* ====================================== Catch All ======================================  */
 
-/* ====================================== Animation ======================================  */
+button.icon {
+  --icon-size: 2.5rem;
 
-/* timing variables */
+  border: none;
+  background: none;
+
+  width: var(--icon-size);
+  height: var(--icon-size);
+}
+
+/* ====================================== Animation ======================================  */
 
 @keyframes rotate-background {
   from {
-    transform: rotate(0deg);
+    /* transform: rotate(0deg); */
+    transform: rotate(-5deg) translateX(600rem);
   }
   to {
-    transform: rotate(-20deg);
+    /* transform: rotate(-28deg); */
+    transform: rotate(-5deg) translateX(0rem);
   }
 }
 
@@ -148,5 +240,40 @@ main {
   }
   to {
     transform: translateX(0);
+  }
+}
+
+/* ====================================== Testing ======================================  */
+
+.test {
+  box-shadow: 5px 5px 5px black;
+
+  margin-top: 20rem;
+
+  outline: red solid 1px;
+  background-color: white;
+
+  div.pic-wrapper {
+    position: relative;
+
+    float: left;
+    margin: 0 var(--spacing) 0 0;
+
+    height: 6rem;
+    width: 6rem;
+    background-color: green;
+
+    div.pic {
+      box-shadow: 5px 5px 5px black;
+
+      position: absolute;
+      bottom: 0;
+      right: 0;
+
+      min-height: 10rem;
+      min-width: 10rem;
+      background-color: red;
+      opacity: 0.66;
+    }
   }
 }

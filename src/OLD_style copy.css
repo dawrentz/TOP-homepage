@@ -52,7 +52,7 @@
 /* default sizing for desktop */
 
 body {
-  width: 1200px;
+  max-width: 1300px;
   margin: auto;
   overflow-x: hidden;
 
@@ -60,74 +60,123 @@ body {
   font-family: "muktaregular", Arial, Helvetica, sans-serif;
 
   > * {
-    padding: calc(10 * var(--padding)) var(--padding);
+    padding: calc(5 * var(--padding)) var(--padding);
   }
 }
 
-/* ===== main ===== */
-header {
-  background-color: var(--main-color);
-}
+main {
+  header {
+    position: relative;
 
-.img-name-wrapper {
-  float: left;
-  position: relative;
+    .intro-wrapper {
+      position: relative;
+      /* display: grid; */
+      /* grid-template-columns: auto auto; */
 
-  margin: 0 var(--spacing) 0 0;
+      img.headshot {
+        float: left;
 
-  height: calc(512px - 100px);
-  width: 341px;
+        min-width: max-content;
 
-  img {
-    box-shadow: 5px 5px 5px black;
+        box-shadow: 5px 5px 5px black;
+        z-index: 2;
 
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
+        /* animate3 */
+        animation: main-img-appear var(--time3) forwards;
+        animation-delay: var(--delay3);
+      }
 
-    min-height: 512px;
-    min-width: 341px;
+      .name-main {
+        font-family: bebas_neueregular;
+        font-size: 5.75rem;
+        color: var(--main-color);
+
+        position: absolute;
+        top: 315px;
+        left: 5px;
+        transform-origin: bottom right;
+        /* z-index: 1; */
+
+        /* all names */
+        > * {
+          text-align: end;
+        }
+
+        /* first name */
+        *:first-child {
+          /* animation: name-slide-in 0.5s; */
+        }
+
+        /* last name */
+        *:last-child {
+          position: relative;
+          top: -50px;
+
+          color: red;
+
+          /* animate1 */
+          animation: name-slide-in var(--time1) backwards;
+          animation-delay: var(--delay1);
+        }
+      }
+
+      .about-me {
+        position: relative;
+        top: 125px;
+
+        display: grid;
+        grid-template-rows: auto auto 1fr;
+
+        height: min-content;
+
+        font-size: large;
+
+        background-color: var(--main-color);
+        box-shadow: 5px 5px 5px black;
+
+        z-index: -1;
+
+        padding: var(--padding) calc(2 * var(--padding));
+
+        /* animate4 (with animate3) */
+        animation: main-img-appear var(--time3) backwards;
+        animation-delay: var(--delay3);
+
+        h2 {
+          font-size: 3rem;
+        }
+
+        .about-icons-wrapper {
+          margin-top: 4rem;
+
+          display: flex;
+          justify-content: end;
+          align-items: end;
+          gap: var(--spacing);
+        }
+      }
+    }
+
+    .background-div {
+      height: 60rem;
+      width: 550rem;
+      background-color: black;
+
+      position: absolute;
+      bottom: -33rem;
+      left: -250rem;
+      transform-origin: bottom left;
+      transform: rotate(var(--bg-angle));
+
+      z-index: -1;
+      /* z-index: 99; */
+      /* opacity: 0.66; */
+
+      /* animate2 */
+      animation: rotate-background var(--time2) linear backwards;
+      animation-delay: var(--delay2);
+    }
   }
-}
-
-.name-wrapper {
-  font-family: bebas_neueregular;
-  font-size: 5.75rem;
-  color: var(--main-color);
-
-  position: absolute;
-  bottom: 45px;
-  left: 8px;
-
-  .last-name {
-    color: red;
-    /* text-align: end; */
-
-    position: absolute;
-    top: 75px;
-    right: 0px;
-  }
-}
-
-.about-wrapper {
-  padding: var(--padding);
-}
-
-.about-info-wrapper {
-  h3 {
-    font-size: 2rem;
-  }
-  p {
-    font-size: large;
-  }
-}
-
-.about-icons-wrapper {
-  display: flex;
-  justify-content: end;
-  gap: var(--spacing);
-
-  padding-top: 5rem;
 }
 
 /* ====================================== Dynamic sizing ======================================  */
@@ -135,29 +184,18 @@ header {
 /* tablet */
 @media (max-width: 1199px) {
   body {
-    width: 615px;
+    width: 500px;
   }
 
-  .img-name-wrapper {
-    width: calc(341px - 100px);
-  }
-
-  .name-wrapper {
-    bottom: 380px;
-    left: 250px;
-  }
-
-  .about-info-wrapper {
-    padding-top: 7rem;
-
-    h3 {
-      text-align: center;
+  main {
+    header {
+      /*  */
     }
   }
 }
 
 /* mobile */
-@media (max-width: 650px) {
+@media (max-width: 500px) {
   body {
     width: 320px;
   }
@@ -211,9 +249,10 @@ button.icon {
 .test {
   box-shadow: 5px 5px 5px black;
 
-  margin-top: 30rem;
+  margin-top: 20rem;
 
-  background-color: pink;
+  outline: red solid 1px;
+  background-color: white;
 
   div.pic-wrapper {
     position: relative;

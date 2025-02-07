@@ -32,15 +32,17 @@
   --sec-color: black;
   --spacing: 1rem;
   --padding: 1rem;
-  --bg-angle: -5deg;
+  --bg-angle: -3deg;
 
   /* animation timing */
-  --delay1: 0.25s;
+  --delay1: 0.5s;
   --time1: 0.5s;
   --delay2: calc(var(--delay1) + var(--time1) + 0s);
   --time2: 1s;
-  --delay3: calc(var(--delay2) + var(--time2) + 0.25s);
+  --delay3: calc(var(--delay2) + var(--time2) + 0s);
   --time3: 1s;
+  --delay4: calc(var(--delay3) + var(--time3) - 0.25s);
+  --time4: 0.5s;
 
   /* debugging */
   * {
@@ -66,7 +68,7 @@ body {
 
 /* ===== main ===== */
 header {
-  background-color: var(--main-color);
+  background-color: transparent;
 }
 
 .img-name-wrapper {
@@ -87,6 +89,9 @@ header {
 
     min-height: 512px;
     min-width: 341px;
+
+    animation: main-appear var(--time3) backwards;
+    animation-delay: var(--delay3);
   }
 }
 
@@ -106,11 +111,42 @@ header {
     position: absolute;
     top: 75px;
     right: 0px;
+
+    animation: name-slide-in var(--time1) backwards;
+    animation-delay: var(--delay1);
+  }
+
+  .animated-background {
+    background-color: var(--sec-color);
+
+    height: 50rem;
+    width: 450rem;
+    transform: rotate(var(--bg-angle));
+    transform-origin: bottom left;
+
+    position: absolute;
+    bottom: -10rem;
+    left: -175rem;
+
+    z-index: -99;
+
+    animation: animate-background var(--time2) backwards;
+    animation-delay: var(--delay2);
   }
 }
 
 .about-wrapper {
   padding: var(--padding);
+  position: relative;
+  z-index: -1;
+
+  background-color: var(--main-color);
+  box-shadow: 5px 5px 5px black;
+
+  animation:
+    main-appear var(--time4) backwards,
+    main-slide-up var(--time4) backwards;
+  animation-delay: var(--delay4);
 }
 
 .about-info-wrapper {
@@ -177,7 +213,7 @@ button.icon {
 
 /* ====================================== Animation ======================================  */
 
-@keyframes rotate-background {
+@keyframes animate-background {
   from {
     /* transform: rotate(0deg); */
     transform: rotate(var(--bg-angle)) translateX(600rem);
@@ -188,12 +224,21 @@ button.icon {
   }
 }
 
-@keyframes main-img-appear {
+@keyframes main-appear {
   from {
     opacity: 0%;
   }
   to {
     opacity: 100%;
+  }
+}
+
+@keyframes main-slide-up {
+  from {
+    transform: translateY(50px);
+  }
+  to {
+    transform: translateY(0);
   }
 }
 

@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>newProject</title>
   </head>
-  <body>
+  <body style="opacity: 0">
     <main>
       <header>
         <div class="img-name-wrapper">
           <img
+            style="opacity: 0"
             class="headshot"
             src="./images/katsumotojpg.jpg"
             alt="katsu protrait"
@@ -17,7 +18,6 @@
           <div class="name-wrapper">
             <div class="first-name">Katsumoto</div>
             <div class="last-name">Sushanobi</div>
-            <div class="animated-background"></div>
           </div>
         </div>
         <div class="about-wrapper">
@@ -35,44 +35,63 @@
             </p>
           </div>
           <div class="about-icons-wrapper">
-            <button class="icon">
-              <img src="./icons/github-original.svg" alt="github" />
-            </button>
-            <button class="icon">
-              <img src="./icons/linkedin-plain.svg" alt="linkedin" />
-            </button>
-            <button class="icon">
-              <img src="./icons/twitter-original.svg" alt="twitter" />
-            </button>
+            <a href="">
+              <img
+                class="icon"
+                src="./icons/github-original.svg"
+                alt="github"
+              />
+            </a>
+            <a href="">
+              <img
+                class="icon"
+                src="./icons/linkedin-plain.svg"
+                alt="linkedin"
+              />
+            </a>
+            <a href="">
+              <img
+                class="icon"
+                src="./icons/twitter-original.svg"
+                alt="twitter"
+              />
+            </a>
           </div>
         </div>
+        <div class="animated-background"></div>
       </header>
       <section>
-        <div class="test">
-          <div class="pic-wrapper">
-            <div class="pic"></div>
-          </div>
+        <h3 class="title">Projects</h3>
 
-          <div class="wrapper">
-            <h3>Title</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
-              aut quaerat dolores facere fugit deleniti, repudiandae iure?
-              Numquam quos accusamus atque qui! Aspernatur voluptatibus,
-              repellendus perferendis delectus cupiditate sequi temporibus.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
-              aut quaerat dolores facere fugit deleniti, repudiandae iure?
-              Numquam quos accusamus atque qui! Aspernatur voluptatibus,
-              repellendus perferendis delectus cupiditate sequi temporibus.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
-              aut quaerat dolores facere fugit deleniti, repudiandae iure?
-              Numquam quos accusamus atque qui! Aspernatur voluptatibus,
-              repellendus perferendis delectus cupiditate sequi temporibus.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
-              aut quaerat dolores facere fugit deleniti, repudiandae iure?
-              Numquam quos accusamus atque qui! Aspernatur voluptatibus,
-              repellendus perferendis delectus cupiditate sequi temporibus.
-            </p>
+        <div class="cards-wrapper">
+          <div class="card">
+            <img
+              src="./images/wide-shot-katso.jpg"
+              alt=""
+              class="project-pic"
+            />
+            <div class="card-info-wrapper">
+              <div class="card-info-top-line">
+                <h4>title</h4>
+                <div class="about-icons-wrapper">
+                  <a href="">
+                    <img
+                      class="icon"
+                      src="./icons/github-original.svg"
+                      alt="github"
+                    />
+                  </a>
+                  <a href="">
+                    <img
+                      class="icon"
+                      src="./icons/open-in-new.svg"
+                      alt="external link"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div class="card-description">description of project</div>
+            </div>
           </div>
         </div>
       </section>

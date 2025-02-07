@@ -35,14 +35,24 @@
   --bg-angle: -3deg;
 
   /* animation timing */
-  --delay1: 0.5s;
+  /* --delay1: 0.5s;
   --time1: 0.5s;
-  --delay2: calc(var(--delay1) + var(--time1) + 0s);
+  --delay2: calc(var(--delay1) + var(--time1) - 0.25s);
   --time2: 1s;
-  --delay3: calc(var(--delay2) + var(--time2) + 0s);
+  --delay3: calc(var(--delay2) + var(--time2) + 0.5s);
   --time3: 1s;
-  --delay4: calc(var(--delay3) + var(--time3) - 0.25s);
-  --time4: 0.5s;
+  --delay4: calc(var(--delay3) + var(--time3) - 0s);
+  --time4: 1s; */
+
+  /* testing */
+  --delay1: 0s;
+  --time1: 0s;
+  --delay2: 0s;
+  --time2: 0s;
+  --delay3: 0s;
+  --time3: 0s;
+  --delay4: 0s;
+  --time4: 0s;
 
   /* debugging */
   * {
@@ -54,6 +64,12 @@
 /* default sizing for desktop */
 
 body {
+  /* outline: solid red 1px; */
+
+  /* solves  Flash Of Unstyled Content (FOUC)*/
+  /* html body style "opacity: 0; */
+  opacity: 1 !important;
+
   width: 1200px;
   margin: auto;
   overflow-x: hidden;
@@ -67,13 +83,16 @@ body {
 }
 
 /* ===== main ===== */
+/* ===== header ===== */
 header {
   background-color: transparent;
+  position: relative;
 }
 
 .img-name-wrapper {
   float: left;
   position: relative;
+  z-index: 1;
 
   margin: 0 var(--spacing) 0 0;
 
@@ -90,7 +109,7 @@ header {
     min-height: 512px;
     min-width: 341px;
 
-    animation: main-appear var(--time3) backwards;
+    animation: main-appear var(--time3) forwards;
     animation-delay: var(--delay3);
   }
 }
@@ -106,7 +125,6 @@ header {
 
   .last-name {
     color: red;
-    /* text-align: end; */
 
     position: absolute;
     top: 75px;
@@ -115,30 +133,30 @@ header {
     animation: name-slide-in var(--time1) backwards;
     animation-delay: var(--delay1);
   }
+}
 
-  .animated-background {
-    background-color: var(--sec-color);
+.animated-background {
+  background-color: var(--sec-color);
 
-    height: 50rem;
-    width: 450rem;
-    transform: rotate(var(--bg-angle));
-    transform-origin: bottom left;
+  height: 50rem;
+  width: 450rem;
+  transform: rotate(var(--bg-angle));
+  transform-origin: bottom left;
 
-    position: absolute;
-    bottom: -10rem;
-    left: -175rem;
+  position: absolute;
+  bottom: -12rem;
+  left: -170rem;
 
-    z-index: -99;
+  z-index: -1;
 
-    animation: animate-background var(--time2) backwards;
-    animation-delay: var(--delay2);
-  }
+  animation: animate-background var(--time2) linear backwards;
+  animation-delay: var(--delay2);
 }
 
 .about-wrapper {
   padding: var(--padding);
   position: relative;
-  z-index: -1;
+  /* z-index: -1; */
 
   background-color: var(--main-color);
   box-shadow: 5px 5px 5px black;
@@ -150,9 +168,6 @@ header {
 }
 
 .about-info-wrapper {
-  h3 {
-    font-size: 2rem;
-  }
   p {
     font-size: large;
   }
@@ -165,6 +180,11 @@ header {
 
   padding-top: 5rem;
 }
+/* ===== section ===== */
+
+section {
+  margin-top: 10rem;
+}
 
 /* ====================================== Dynamic sizing ======================================  */
 
@@ -176,11 +196,11 @@ header {
 
   .img-name-wrapper {
     width: calc(341px - 100px);
-  }
 
-  .name-wrapper {
-    bottom: 380px;
-    left: 250px;
+    .name-wrapper {
+      bottom: 380px;
+      left: 250px;
+    }
   }
 
   .about-info-wrapper {
@@ -190,18 +210,55 @@ header {
       text-align: center;
     }
   }
+
+  .animated-background {
+    bottom: 25rem;
+  }
 }
 
 /* mobile */
 @media (max-width: 650px) {
   body {
-    width: 320px;
+    /* width: calc(341px + var(--spacing)+ var(--spacing)); */
+    width: calc(341px + 2rem);
+  }
+
+  main {
+    padding-top: calc(2 * var(--padding));
+  }
+
+  .img-name-wrapper {
+    width: 341px;
+    height: 512px;
+
+    margin-bottom: 1rem;
+
+    img {
+      box-shadow: none;
+    }
+    .name-wrapper {
+      bottom: 45px;
+      left: 8px;
+    }
+  }
+  .about-wrapper {
+    box-shadow: none;
+
+    .about-icons-wrapper {
+      justify-content: center;
+
+      padding-top: var(--padding);
+    }
+  }
+
+  .animated-background {
+    bottom: 21rem;
   }
 }
 
 /* ====================================== Catch All ======================================  */
 
-button.icon {
+img.icon {
   --icon-size: 2.5rem;
 
   border: none;
@@ -209,6 +266,10 @@ button.icon {
 
   width: var(--icon-size);
   height: var(--icon-size);
+}
+
+h3 {
+  font-size: 2rem;
 }
 
 /* ====================================== Animation ======================================  */

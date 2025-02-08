@@ -27,32 +27,36 @@
 /* ====================================== Global ======================================  */
 
 :root {
-  /* variables */
+  /* general variables */
   --main-color: white;
   --sec-color: black;
   --spacing: 1rem;
   --padding: 1rem;
+
+  /* specific variables */
   --bg-angle: -3deg;
+  --headshot-width: 341px;
+  --headshot-height: 512px;
 
   /* animation timing */
-  /* --delay1: 0.5s;
+  --delay1: 0.5s;
   --time1: 0.5s;
   --delay2: calc(var(--delay1) + var(--time1) - 0.25s);
   --time2: 1s;
   --delay3: calc(var(--delay2) + var(--time2) + 0.5s);
   --time3: 1s;
   --delay4: calc(var(--delay3) + var(--time3) - 0s);
-  --time4: 1s; */
+  --time4: 1s;
 
   /* testing */
-  --delay1: 0s;
+  /* --delay1: 0s;
   --time1: 0s;
   --delay2: 0s;
   --time2: 0s;
   --delay3: 0s;
   --time3: 0s;
   --delay4: 0s;
-  --time4: 0s;
+  --time4: 0s; */
 
   /* debugging */
   * {
@@ -78,11 +82,11 @@ body {
   font-family: "muktaregular", Arial, Helvetica, sans-serif;
 
   > * {
-    padding: calc(10 * var(--padding)) var(--padding);
+    padding: calc(10 * var(--padding)) var(--padding) 0;
   }
 }
 
-/* ===== main ===== */
+/* ================== main ================== */
 /* ===== header ===== */
 header {
   background-color: transparent;
@@ -96,8 +100,8 @@ header {
 
   margin: 0 var(--spacing) 0 0;
 
-  height: calc(512px - 100px);
-  width: 341px;
+  height: calc(var(--headshot-height) - 100px);
+  width: var(--headshot-width);
 
   img {
     box-shadow: 5px 5px 5px black;
@@ -106,8 +110,8 @@ header {
     bottom: 0px;
     right: 0px;
 
-    min-height: 512px;
-    min-width: 341px;
+    min-height: var(--headshot-height);
+    min-width: var(--headshot-width);
 
     animation: main-appear var(--time3) forwards;
     animation-delay: var(--delay3);
@@ -180,10 +184,215 @@ header {
 
   padding-top: 5rem;
 }
+
 /* ===== section ===== */
 
 section {
   margin-top: 10rem;
+
+  animation:
+    main-appear var(--time4) backwards,
+    main-slide-up var(--time4) backwards;
+  animation-delay: var(--delay4);
+}
+
+.cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: space-between;
+  gap: calc(2 * var(--spacing));
+}
+
+.card {
+  width: var(--headshot-width);
+  /* box-shadow: 5px 5px 5px black; */
+
+  .project-pic {
+    height: var(--headshot-width);
+
+    &:hover {
+      background-image: none !important;
+      background-color: white !important;
+    }
+
+    .project-pic-title {
+      height: var(--headshot-width);
+
+      color: transparent;
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      font-family: bebas_neueregular;
+
+      &:hover {
+        color: rgba(255, 0, 0, 0.5);
+      }
+    }
+  }
+
+  .card-info-wrapper {
+    padding: var(--padding);
+
+    .card-info-top-line {
+      display: flex;
+      justify-content: space-between;
+
+      h4 {
+        font-size: 1.5rem;
+        /* color: red; */
+      }
+
+      .card-icons-wrapper {
+        display: flex;
+        align-items: center;
+        gap: calc(0.5 * var(--spacing));
+      }
+
+      img.icon {
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+    }
+  }
+}
+
+/* ==== per project fine tuning ==== */
+/* #1 */
+.card#project1 {
+  .project-pic {
+    background-image: url(./images/harakirijpg.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .project-pic-title {
+    text-align: end;
+    font-size: 13rem;
+    line-height: 10rem;
+    background-image: url(./images/harakirijpg.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+/* #2 */
+.card#project2 {
+  .project-pic {
+    background-image: url(./images/yojimbo.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .project-pic-title {
+    text-align: center;
+    font-size: 13rem;
+    line-height: 10rem;
+    background-image: url(./images/yojimbo.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+/* #3 */
+.card#project3 {
+  .project-pic {
+    background-image: url(./images/swift.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .project-pic-title {
+    text-align: start;
+    font-size: 4.5rem;
+    line-height: 4rem;
+    background-image: url(./images/swift.jpg);
+    background-position: center;
+    background-size: cover;
+
+    *:first-child {
+      font-size: 11rem;
+      line-height: 8.5rem;
+    }
+  }
+}
+
+/* #4 */
+.card#project4 {
+  .project-pic {
+    background-image: url(./images/seven.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .project-pic-title {
+    text-align: end;
+    font-size: 8rem;
+    line-height: 7rem;
+
+    background-image: url(./images/seven.jpg);
+    background-position: center;
+    background-size: cover;
+
+    *:first-child {
+      font-size: 4rem;
+      line-height: 4rem;
+    }
+    *:nth-child(2) {
+      font-size: 11rem;
+      line-height: 8rem;
+    }
+  }
+}
+
+/* #5 */
+.card#project5 {
+  .project-pic {
+    background-image: url(./images/sheihara.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .project-pic-title {
+    text-align: center;
+    font-size: 11rem;
+    line-height: 8rem;
+
+    background-image: url(./images/sheihara.jpg);
+    background-position: center;
+    background-size: cover;
+
+    *:first-child {
+      font-size: 4rem;
+      line-height: 4rem;
+    }
+  }
+}
+
+/* #6 */
+.card#project6 {
+  .project-pic {
+    background-image: url(./images/kagemusha.jpg);
+    background-position: left 0% top 15%;
+    background-size: cover;
+  }
+
+  .project-pic-title {
+    /* color: red; */
+
+    text-align: start;
+    font-size: 10rem;
+    line-height: 8rem;
+
+    background-image: url(./images/kagemusha.jpg);
+    background-position: left 0% top 15%;
+    background-size: cover;
+
+    *:first-child {
+      font-size: 13rem;
+      line-height: 10rem;
+    }
+  }
 }
 
 /* ====================================== Dynamic sizing ======================================  */
@@ -192,10 +401,11 @@ section {
 @media (max-width: 1199px) {
   body {
     width: 615px;
+    /* width: 800px; */
   }
 
   .img-name-wrapper {
-    width: calc(341px - 100px);
+    width: calc(var(--headshot-width) - 100px);
 
     .name-wrapper {
       bottom: 380px;
@@ -219,8 +429,8 @@ section {
 /* mobile */
 @media (max-width: 650px) {
   body {
-    /* width: calc(341px + var(--spacing)+ var(--spacing)); */
-    width: calc(341px + 2rem);
+    /* width: calc(var(--headshot-width) + var(--spacing)+ var(--spacing)); */
+    width: calc(var(--headshot-width) + 2rem);
   }
 
   main {
@@ -228,8 +438,8 @@ section {
   }
 
   .img-name-wrapper {
-    width: 341px;
-    height: 512px;
+    width: var(--headshot-width);
+    height: var(--headshot-height);
 
     margin-bottom: 1rem;
 
@@ -313,35 +523,3 @@ h3 {
 }
 
 /* ====================================== Testing ======================================  */
-
-.test {
-  box-shadow: 5px 5px 5px black;
-
-  margin-top: 30rem;
-
-  background-color: pink;
-
-  div.pic-wrapper {
-    position: relative;
-
-    float: left;
-    margin: 0 var(--spacing) 0 0;
-
-    height: 6rem;
-    width: 6rem;
-    background-color: green;
-
-    div.pic {
-      box-shadow: 5px 5px 5px black;
-
-      position: absolute;
-      bottom: 0;
-      right: 0;
-
-      min-height: 10rem;
-      min-width: 10rem;
-      background-color: red;
-      opacity: 0.66;
-    }
-  }
-}

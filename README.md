@@ -9,7 +9,8 @@ todo:
     -kagemusha icons are small
     -footer
     -animate icons hover
+    -need set size restraints not on body
 
 notes:
-
+    -mistake: need set width with children of body, not body itself
  -->

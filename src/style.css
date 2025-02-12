@@ -39,28 +39,28 @@
   --headshot-height: 512px;
 
   /* animation timing */
-  --delay1: 0.5s;
+  /* --delay1: 0.5s;
   --time1: 0.5s;
   --delay2: calc(var(--delay1) + var(--time1) - 0.25s);
   --time2: 1s;
   --delay3: calc(var(--delay2) + var(--time2) + 0.5s);
   --time3: 1s;
   --delay4: calc(var(--delay3) + var(--time3) - 0s);
-  --time4: 1s;
+  --time4: 1s; */
 
   /* testing */
-  /* --delay1: 0s;
+  --delay1: 0s;
   --time1: 0s;
   --delay2: 0s;
   --time2: 0s;
   --delay3: 0s;
   --time3: 0s;
   --delay4: 0s;
-  --time4: 0s; */
+  --time4: 0s;
 
   /* debugging */
   * {
-    outline: solid red 1px;
+    /* outline: solid red 1px; */
   }
 }
 
@@ -218,7 +218,7 @@ section {
   .project-pic {
     height: var(--headshot-width);
 
-    &:hover {
+    &.hovered {
       background-image: none !important;
       background-color: white !important;
     }
@@ -233,7 +233,7 @@ section {
 
       font-family: bebas_neueregular;
 
-      &:hover {
+      &.hovered {
         color: rgba(255, 0, 0, 0.5);
       }
     }
@@ -605,6 +605,18 @@ img.icon {
 
   width: var(--icon-size);
   height: var(--icon-size);
+
+  transform: translateY(0);
+
+  transition: transform 0.33s;
+}
+
+.icon-link {
+  &:hover .icon {
+    transform: translateY(-5px);
+
+    transition: transform 0.1s;
+  }
 }
 
 h3 {

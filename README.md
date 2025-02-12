@@ -9,4 +9,5 @@ todo:
 notes:
     -mistake: need set width with children of body, not body itself
         --use padding to control width?
+    -should check on actual phone early on
  -->

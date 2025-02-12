@@ -39,24 +39,24 @@
   --headshot-height: 512px;
 
   /* animation timing */
-  /* --delay1: 0.5s;
+  --delay1: 0.5s;
   --time1: 0.5s;
   --delay2: calc(var(--delay1) + var(--time1) - 0.25s);
   --time2: 1s;
   --delay3: calc(var(--delay2) + var(--time2) + 0.5s);
   --time3: 1s;
-  --delay4: calc(var(--delay3) + var(--time3) - 0s);
-  --time4: 1s; */
+  --delay4: calc(var(--delay3) + var(--time3) - 0.25s);
+  --time4: 1s;
 
   /* testing */
-  --delay1: 0s;
+  /* --delay1: 0s;
   --time1: 0s;
   --delay2: 0s;
   --time2: 0s;
   --delay3: 0s;
   --time3: 0s;
   --delay4: 0s;
-  --time4: 0s;
+  --time4: 0s; */
 
   /* debugging */
   * {
@@ -65,19 +65,17 @@
 }
 
 /* ====================================== Content ======================================  */
-/* default sizing for desktop */
 
 html,
 body {
   height: 100%;
 }
 
+/* default sizing for desktop */
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  /* outline: solid red 1px; */
 
   /* solves  Flash Of Unstyled Content (FOUC)*/
   /* html body style "opacity: 0; */
@@ -96,6 +94,7 @@ body {
 }
 
 /* ================== main ================== */
+
 /* ===== header ===== */
 header {
   background-color: transparent;
@@ -213,7 +212,6 @@ section {
 
 .card {
   width: var(--headshot-width);
-  /* box-shadow: 5px 5px 5px black; */
 
   .project-pic {
     height: var(--headshot-width);
@@ -248,7 +246,6 @@ section {
 
       h4 {
         font-size: 1.5rem;
-        /* color: red; */
       }
 
       .card-icons-wrapper {
@@ -267,7 +264,8 @@ section {
   }
 }
 
-/* ==== per project fine tuning ==== */
+/* ==== per project specs ==== */
+
 /* #1 */
 .card#project1 {
   .project-pic {
@@ -412,7 +410,6 @@ section {
 
 footer {
   * {
-    /* outline: red solid 1px; */
     text-align: start;
   }
 
@@ -502,8 +499,6 @@ footer {
   }
 
   footer {
-    /* padding: 0; */
-
     div.wrapper {
       grid-template-columns: auto auto;
       max-width: calc(682px + 32px + 32px);
@@ -627,11 +622,9 @@ h3 {
 
 @keyframes animate-background {
   from {
-    /* transform: rotate(0deg); */
     transform: rotate(var(--bg-angle)) translateX(600rem);
   }
   to {
-    /* transform: rotate(-28deg); */
     transform: rotate(var(--bg-angle)) translateX(0rem);
   }
 }

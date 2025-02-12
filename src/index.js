@@ -2,7 +2,6 @@
 
 //imports
 import "./style.css";
-import * as mod from "./mod.js";
 
 //declarations
 const cards = document.querySelectorAll(".card");
